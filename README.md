@@ -84,7 +84,7 @@ services:
       - PG_USER=your_database_user
       - PG_PASSWORD=your_secure_password
       - SERVER_PORT=8080
-      - PROTECTED_USERS=postgres,dbadmin
+      - PROTECTED_USERS=postgres 
 ```
 
 ### 2. Run the Container
