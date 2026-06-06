@@ -25,8 +25,7 @@ WHERE pid <> pg_backend_pid();`
 
 _, err := pool.Exec(context.Background(), query)
 if err != nil {
-// Faqatgina haqiqiy xato bo'lib qolsagina jiringlaydi
-slog.Error("ASH Worker xatosi", "error", err)
+slog.Error("ASH Worker error", "error", err)
 }
 }
 }()
