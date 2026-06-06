@@ -54,6 +54,11 @@ CREATE TABLE IF NOT EXISTS pgdoctor_ash_history (
 
 <img src="./pgdoctor1.jpg" width="100%">
 
+<img src="./pgdoctor2.jpg" width="100%">
+
+<img src="./pgdoctor3.jpg" width="100%">
+
+<img src="./pgdoctor4.jpg" width="100%">
 ---
 
 ## 🚀 Quick Start (Docker Compose)
@@ -66,6 +71,7 @@ version: '3.8'
 
 services:
   pgdoctor-app:
+    build: .          # add your build location
     image: pgdoctor:v1
     container_name: pgdoctor-console
     ports:
