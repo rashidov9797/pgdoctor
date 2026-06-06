@@ -1,0 +1,18 @@
+
+version: '3.8'
+
+services:
+  pgdoctor-app:
+    image: pgdoctor:v1
+    container_name: pgdoctor-console
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - PG_HOST=your_postgresql_server_ip
+      - PG_PORT=5432
+      - PG_DATABASE=your_database_name
+      - PG_USER=your_database_user
+      - PG_PASSWORD=your_secure_password
+      - SERVER_PORT=8080
+      - PROTECTED_USERS=postgres,dbadmin

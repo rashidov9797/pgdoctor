@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* LIGHT THEME VARIABLES */
+  --pg-bg: #f9fafb;
+  --pg-panel: #ffffff;
+  --pg-text: #111827;
+  --pg-muted: #6b7280;
+  --pg-border: rgba(0, 0, 0, 0.1);
+  --pg-hover: rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  /* DARK THEME VARIABLES */
+  --pg-bg: #0d0e12;
+  --pg-panel: #15161c;
+  --pg-text: #F3F4F6;
+  --pg-muted: #8b949e;
+  --pg-border: rgba(255, 255, 255, 0.05);
+  --pg-hover: rgba(255, 255, 255, 0.02);
+}
+
+body {
+  background-color: var(--pg-bg);
+  color: var(--pg-text);
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@layer components {
+  .luxury-card {
+    background-color: var(--pg-panel);
+    border: 1px solid var(--pg-border);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+  }
+  .pg-table { @apply w-full border-collapse text-left; }
+  .pg-table th { color: var(--pg-muted); font-weight: bold; padding: 1.5rem; border-bottom: 1px solid var(--pg-border); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+  .pg-table td { padding: 1.5rem; border-bottom: 1px solid var(--pg-border); }
+  .pg-table tr:hover td { background-color: var(--pg-hover); }
+}

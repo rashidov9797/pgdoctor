@@ -1,0 +1,5 @@
+
+backend/.env
+.env
+backend/pgdoctor-server
+frontend/frontend.log
