@@ -3,6 +3,7 @@ version: '3.8'
 
 services:
   pgdoctor-app:
+    build: . 
     image: pgdoctor:v1
     container_name: pgdoctor-console
     ports:
