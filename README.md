@@ -20,25 +20,35 @@ A lightweight and high-performance PostgreSQL monitoring tool built with **Go** 
 
 ---
 
-## 📋 Requirements & Database Setup
+## 📋 Prerequisites & Database Setup
 
-For `pgdoctor` to function with its full potential, your PostgreSQL instance **must** have the required extensions preloaded.
+For `pgdoctor` to function properly, your PostgreSQL / eXperDB instance must have the core statistics extension enabled.
 
 ### 1. Enable Shared Libraries in `postgresql.conf`
+Add `pg_stat_statements` to your shared libraries to allow the database to collect execution statistics:
+
 ```ini
-shared_preload_libraries = 'pg_stat_statements, pg_buffercache, pg_cron, pg_ash'
+shared_preload_libraries = 'pg_stat_statements'
 ```
 *(Note: Changing `shared_preload_libraries` requires a PostgreSQL service restart).*
 
-### 2. Create Extensions in Your Database
+### 2. Initialize Database Components
+Connect to your target database as a superuser and execute the following SQL script to enable the extension and create the required history tracking table:
+
 ```sql
+-- 1. Enable extension for tracking execution statistics of all SQL statements
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
-CREATE EXTENSION IF NOT EXISTS pg_buffercache;
-CREATE EXTENSION IF NOT EXISTS pg_cron;
-CREATE EXTENSION IF NOT EXISTS pg_ash;
+
+-- 2. Create history table for Active Session History (ASH) snapshots
+CREATE TABLE IF NOT EXISTS pgdoctor_ash_history (
+    id BIGSERIAL PRIMARY KEY,
+    snapshot_time TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    active_sessions INT NOT NULL,
+    idle_sessions INT NOT NULL,
+    blocking_locks INT NOT NULL
+);
 ```
 
----
 
 ## 📸 Screenshots
 
