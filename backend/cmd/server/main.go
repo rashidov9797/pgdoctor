@@ -92,7 +92,7 @@ func main() {
 		})
 	})
 
-	// 8. Serve Frontend (React static fayllarni Go ichidan o'qish)
+	// 8. Serve Frontend
 	publicFS, err := fs.Sub(frontendFS, "dist")
 	if err != nil {
 		slog.Error("Frontend static fayllarni yuklashda xatolik", "error", err)
