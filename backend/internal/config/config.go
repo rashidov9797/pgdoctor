@@ -1,20 +1,18 @@
-
 package config
 
 import (
 	"log/slog"
 	"os"
 	"strings"
-
 	"github.com/joho/godotenv"
 )
 
 type Config struct {
-	PGConnString   string
-	ServerPort     string
-	EnableTerm     bool
-	EnableCancel   bool
-	ProtectedUsers map[string]bool
+	PGConnString    string
+	ServerPort      string
+	EnableTerminate bool
+	EnableCancel    bool
+	ProtectedUsers  map[string]bool
 }
 
 func LoadConfig() *Config {
@@ -30,11 +28,11 @@ func LoadConfig() *Config {
 	}
 
 	return &Config{
-		PGConnString:   buildPGString(),
-		ServerPort:     getEnv("SERVER_PORT", "8080"),
-		EnableTerm:     getEnv("ENABLE_TERMINATE", "false") == "true",
-		EnableCancel:   getEnv("ENABLE_CANCEL", "true") == "true",
-		ProtectedUsers: protected,
+		PGConnString:    buildPGString(),
+		ServerPort:      getEnv("SERVER_PORT", "8080"),
+		EnableTerminate: getEnv("ENABLE_TERMINATE", "false") == "true",
+		EnableCancel:    getEnv("ENABLE_CANCEL", "true") == "true",
+		ProtectedUsers:  protected,
 	}
 }
 
