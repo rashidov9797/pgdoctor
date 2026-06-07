@@ -1,40 +1,42 @@
 package api
 
 import (
-"encoding/json"
-"fmt"
-"net/http"
-"github.com/shirou/gopsutil/v3/cpu"
-"github.com/shirou/gopsutil/v3/mem"
+	"encoding/json"
+	"fmt"
+	"log/slog"
+	"net/http"
+	"time"
+
+	"github.com/shirou/gopsutil/v3/cpu"
+	"github.com/shirou/gopsutil/v3/mem"
 )
 
 type SystemMetrics struct {
-CPU  string `json:"cpu"`
-RAM  string `json:"ram"`
-Disk string `json:"disk"`
+	CPU  string `json:"cpu"`
+	RAM  string `json:"ram"`
+	Disk string `json:"disk"`
 }
 
 type SystemHandler struct{}
 
 func (h *SystemHandler) GetSystemMetrics(w http.ResponseWriter, r *http.Request) {
-// CPU % o'qish
-c, _ := cpu.Percent(0, false)
-cpuVal := "0.0"
-if len(c) > 0 {
-cpuVal = fmt.Sprintf("%.1f", c[0])
-}
+	c, _ := cpu.Percent(200*time.Millisecond, false)
+	cpuVal := "0.0"
+	if len(c) > 0 {
+		cpuVal = fmt.Sprintf("%.1f", c[0])
+	}
 
-// RAM o'qish
-v, _ := mem.VirtualMemory()
-// Ishlatilgan RAM va Umumiy RAM (GB formatida)
-ramVal := fmt.Sprintf("%.1f / %dGB", float64(v.Used)/1024/1024/1024, v.Total/1024/1024/1024)
+	v, _ := mem.VirtualMemory()
+	ramVal := fmt.Sprintf("%.1f / %dGB", float64(v.Used)/1024/1024/1024, v.Total/1024/1024/1024)
 
-metrics := SystemMetrics{
-CPU:  cpuVal,
-RAM:  ramVal,
-Disk: "Stable", // Disk ma'lumotlarini ham keyinchalik xuddi shu usulda qo'shish mumkin
-}
+	metrics := SystemMetrics{
+		CPU:  cpuVal,
+		RAM:  ramVal,
+		Disk: "Stable",
+	}
 
-w.Header().Set("Content-Type", "application/json")
-json.NewEncoder(w).Encode(metrics)
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(metrics); err != nil {
+		slog.Error("JSON encode failed", "error", err)
+	}
 }
