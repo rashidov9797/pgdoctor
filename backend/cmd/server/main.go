@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -87,7 +86,7 @@ func main() {
 
 		// Protected/Destructive routes
 		r.Group(func(protected chi.Router) {
-			protected.Use(middleware.Auth)
+			protected.Use(customMiddleware.APIKeyAuth)
 			protected.Post("/sessions/{pid}/cancel", sessionHandler.CancelSession)
 			protected.Post("/sessions/{pid}/terminate", sessionHandler.TerminateSession)
 		})
