@@ -45,10 +45,9 @@ func (s *SessionService) checkProtection(ctx context.Context, pid int) error {
 		}
 	}
 
-	for _, protectedUser := range s.Config.ProtectedUsers {
-		if username == protectedUser {
-			return errors.New("action denied: user is protected")
-		}
+	if s.Config.ProtectedUsers[username] {
+		return errors.New("action denied: user is protected")
 	}
+
 	return nil
 }
