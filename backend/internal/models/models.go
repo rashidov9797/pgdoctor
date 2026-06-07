@@ -48,7 +48,6 @@ Pct     float64 `json:"pct"`
 Query   string  `json:"query"`
 }
 
-// YANGI QO'SHILDI: Heavy/CPU Intensive querylar uchun
 type HeavyQuery struct {
 Username       string  `json:"username"`
 Calls          int64   `json:"calls"`
