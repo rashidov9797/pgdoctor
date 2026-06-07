@@ -13,10 +13,9 @@ A lightweight and high-performance PostgreSQL monitoring tool built with **Go** 
 
 * **Real-time Dashboard:** Get an instant overview of overall database health, active connections, and CPU/Memory resource utilization.
 * **Query Performance Analyzer:** Identify and isolate slow-running queries, track execution counts, and optimize performance using `pg_stat_statements`.
-* **Active Session History (ASH):** Deep-dive into active and waiting database sessions with comprehensive historical analysis via `pg_ash`.
-* **Dead Tuples & Bloat Monitor:** Track dead tuples across tables in real-time to know exactly when your database needs a `VACUUM`.
-* **Cron Job Manager:** Easily monitor and control scheduled PostgreSQL background tasks and automated maintenance scripts driven by `pg_cron`.
-* **Buffer Cache Insights:** Analyze memory efficiency and shared buffer usage breakdown across different tables and indexes via `pg_buffercache`.
+* **Active Session History:** Deep-dive into active and waiting database sessions with comprehensive historical analysis captured natively by the Go background worker.
+* **Dead Tuples & Bloat Monitor:** Track dead tuples across tables in real-time to know exactly when your database needs a VACUUM.
+* **Background Task Scheduler:** Seamlessly manage historical snapshots and automated metrics collection driven by Go's internal ticker mechanism.
 
 ---
 
