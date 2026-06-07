@@ -65,7 +65,7 @@ ON pgdoctor_ash_history (snapshot_time DESC);
 <img src="./pgdoctor3.jpg" width="100%">
 
 <img src="./pgdoctor4.jpg" width="100%">
----
+
 
 ## 🚀 Quick Start (Docker Compose)
 
