@@ -34,11 +34,14 @@ shared_preload_libraries = 'pg_stat_statements'
 ### 2. Initialize Database Components
 Connect to your target database as a superuser and execute the following SQL script to enable the extension and create the required history tracking table:
 
-```sql
--- 1. Enable extension for tracking execution statistics of all SQL statements
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+pgdoctor` uses a lightweight, internal time-series strategy to capture Active Session History (ASH) without relying on any heavy third-party extensions. Before launching the application, make sure to initialize the history table and its optimized index in your target PostgreSQL database.
 
--- 2. Create history table for Active Session History (ASH) snapshots
+### 1. Initialize Schema
+
+Run the following SQL script on your monitored database to create the required table and performance index:
+
+```sql
+-- Create history table for Active Session Historysnapshots
 CREATE TABLE IF NOT EXISTS pgdoctor_ash_history (
     id BIGSERIAL PRIMARY KEY,
     snapshot_time TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
@@ -46,6 +49,10 @@ CREATE TABLE IF NOT EXISTS pgdoctor_ash_history (
     idle_sessions INT NOT NULL,
     blocking_locks INT NOT NULL
 );
+
+-- Optimize for time-range filtering and descending order queries
+CREATE INDEX IF NOT EXISTS idx_pgdoctor_ash_snapshot_time 
+ON pgdoctor_ash_history (snapshot_time DESC);
 ```
 
 
