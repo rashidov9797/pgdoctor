@@ -5,7 +5,6 @@ import (
 	"log/slog"
 	"net/http"
 	"strconv"
-
 	"github.com/go-chi/chi/v5"
 	"pgdoctor/internal/service"
 )
@@ -48,8 +47,8 @@ func (h *SessionHandler) TerminateSession(w http.ResponseWriter, r *http.Request
 }
 
 func (h *SessionHandler) CancelSession(w http.ResponseWriter, r *http.Request) {
-	if !h.Service.Config.EnableTerminate {
-		http.Error(w, "Termination is disabled", http.StatusForbidden)
+	if !h.Service.Config.EnableCancel {
+		http.Error(w, "Cancel is disabled", http.StatusForbidden)
 		return
 	}
 
