@@ -68,7 +68,13 @@ ON pgdoctor_ash_history (snapshot_time DESC);
 
 ## 🚀 Quick Start (Docker Compose)
 
-### 1. Configuration
+### Git clone
+```bash
+git clone https://github.com/rashidov9797/pgdoctor.git
+cd pgdoctor 
+vi docker-compose.yml
+```
+### 2. Configuration
 Create a `docker-compose.yml` file and paste the following content:
 
 ```yaml
@@ -92,7 +98,7 @@ services:
       - PROTECTED_USERS=postgres 
 ```
 
-### 2. Run the Container
+### 3. Run the Container
 ```bash
 docker compose up -d
 ```
