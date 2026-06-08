@@ -21,7 +21,7 @@ A lightweight and high-performance PostgreSQL monitoring tool built with **Go** 
 
 ## 📋 Prerequisites & Database Setup
 
-### 📋 Requirements
+### Requirements
 PostgreSQL Version: 13 or higher
 
 ### 1. Enable Shared Libraries in `postgresql.conf`
