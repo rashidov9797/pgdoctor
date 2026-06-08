@@ -2,6 +2,8 @@
 
 A lightweight and high-performance PostgreSQL monitoring tool built with **Go** and **React**. Track database health, view dead tuples, manage automated tasks, and analyze active session histories (ASH) in real-time.
 
+<img src="./pgdoctor1.jpg" width="100%">
+
 ![Go](https://img.shields.io/badge/Language-Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 ![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Docker](https://img.shields.io/badge/DevOps-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
