@@ -55,17 +55,6 @@ ON pgdoctor_ash_history (snapshot_time DESC);
 ```
 
 
-## 📸 Screenshots
-
-<img src="./pgdoctor1.jpg" width="100%">
-
-<img src="./pgdoctor2.jpg" width="100%">
-
-<img src="./pgdoctor3.jpg" width="100%">
-
-<img src="./pgdoctor4.jpg" width="100%">
-
-
 ## 🚀 Quick Start (Docker Compose)
 
 ### Git clone
@@ -102,6 +91,19 @@ services:
 ```bash
 docker compose up -d
 ```
+
+
+## 📸 Screenshots
+
+<img src="./pgdoctor1.jpg" width="100%">
+
+<img src="./pgdoctor2.jpg" width="100%">
+
+<img src="./pgdoctor3.jpg" width="100%">
+
+<img src="./pgdoctor4.jpg" width="100%">
+
+
 
 ### 3. Access the Web UI
 👉 Open `http://localhost:8080` or `http://<YOUR_SERVER_IP>:8080`
