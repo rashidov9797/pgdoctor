@@ -21,7 +21,8 @@ A lightweight and high-performance PostgreSQL monitoring tool built with **Go** 
 
 ## 📋 Prerequisites & Database Setup
 
-For `pgdoctor` to function properly, your PostgreSQL / eXperDB instance must have the core statistics extension enabled.
+### 📋 Requirements
+PostgreSQL Version: 13 or higher
 
 ### 1. Enable Shared Libraries in `postgresql.conf`
 Add `pg_stat_statements` to your shared libraries to allow the database to collect execution statistics:
